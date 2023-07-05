@@ -1,5 +1,5 @@
 export default function cleanSet(setValues, startString) {
-  if (startString === '') {
+  if (startString.trim() === '') {
     return '';
   }
   const filteredValues = Array.from(setValues)
