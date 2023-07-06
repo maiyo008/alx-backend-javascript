@@ -1,8 +1,8 @@
 class Teacher {
-  private firstName: string;
-  private lastName: string;
+  firstName: string;
+  lastName: string;
   readonly fullTimeEmployee: boolean;
-  private yearsOfExperience?: number;
+  yearsOfExperience?: number;
   readonly location: string;
 
   constructor(firstName: string, lastName: string, fullTimeEmployee: boolean, location: string) {
@@ -15,7 +15,8 @@ class Teacher {
   [key: string]: any; // Allow adding any attribute to the object
 
   toString(): string {
-    const attributes = Object.entries(this)
+    const attributes = Object.getOwnPropertyNames(this)
+      .map((key) => [key, this[key]])
       .map(([key, value]) => `${key}: ${value}`)
       .join('\n');
 
