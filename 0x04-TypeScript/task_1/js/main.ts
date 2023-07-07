@@ -15,8 +15,7 @@ class Teacher {
   [key: string]: any; // Allow adding any attribute to the object
 
   toString(): string {
-    const attributes = Object.getOwnPropertyNames(this)
-      .map((key) => [key, this[key]])
+    const attributes = Object.entries(this)
       .map(([key, value]) => `${key}: ${value}`)
       .join('\n');
 
@@ -24,16 +23,12 @@ class Teacher {
   }
 }
 
-interface Directors extends Teacher {
-  numberOfReports: number;
-}
-
-const director1: Directors = {
+const teacher3: Teacher = {
   firstName: 'John',
+  fullTimeEmployee: false,
   lastName: 'Doe',
   location: 'London',
-  fullTimeEmployee: true,
-  numberOfReports: 17,
+  contract: false,
 };
 
-console.log(director1.toString());
+console.log(teacher3.toString());
