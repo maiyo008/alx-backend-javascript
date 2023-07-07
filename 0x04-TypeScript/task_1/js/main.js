@@ -38,3 +38,27 @@ var Teacher = /** @class */ (function () {
 var director = new Teacher("John", "Doe", true, "London", { yearsOfExperience: 10 }); // Use type assertion to specify the Director type
 director.numberOfReports = 5;
 console.log(director.toString());
+var printTeacher = function (firstName, lastName) {
+    var firstLetter = firstName.charAt(0).toUpperCase();
+    var fullName = firstLetter + ". " + lastName;
+    return fullName;
+};
+// Example usage
+console.log(printTeacher("John", "Doe")); // J. Doe
+var StudentClass = /** @class */ (function () {
+    function StudentClass(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+    StudentClass.prototype.workOnHomework = function () {
+        return "Currently working";
+    };
+    StudentClass.prototype.displayName = function () {
+        return this.firstName;
+    };
+    return StudentClass;
+}());
+// Example usage
+var student = new StudentClass("John", "Doe");
+console.log(student.displayName()); // John
+console.log(student.workOnHomework()); // Currently working
