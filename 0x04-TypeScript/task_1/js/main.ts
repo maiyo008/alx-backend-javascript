@@ -43,11 +43,10 @@ const director: Directors = new Teacher(
   "Doe",
   true,
   "London",
-  {
-    yearsOfExperience: 10,
-    numberOfReports: 5,
-    department: "Finance",
-  }
-);
+  { yearsOfExperience: 10 }
+) as Directors; // Use type assertion to specify the Director type
+
+director.numberOfReports = 5;
+director.department = "Finance";
 
 console.log(director.toString());
