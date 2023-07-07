@@ -49,3 +49,19 @@ const director: Directors = new Teacher(
 director.numberOfReports = 5;
 
 console.log(director.toString());
+
+// Task 3
+interface PrintTeacherFunction {
+  (firstName: string, lastName: string): string;
+}
+
+const printTeacher: PrintTeacherFunction = (firstName: string, lastName: string): string => {
+  const firstLetter = firstName.charAt(0).toUpperCase();
+  const fullName = `${firstLetter}. ${lastName}`;
+
+  return fullName;
+};
+
+// Example usage
+console.log(printTeacher("John", "Doe")); // J. Doe
+
