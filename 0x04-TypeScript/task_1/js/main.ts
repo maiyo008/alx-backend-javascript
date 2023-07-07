@@ -18,7 +18,9 @@ class Teacher {
     this.location = location;
     this.yearsOfExperience = yearsOfExperience;
 
-    Object.assign(this, additionalAttributes);
+    for (const key in additionalAttributes) {
+      this[key] = additionalAttributes[key];
+    }
   }
 
   toString(): string {
