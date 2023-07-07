@@ -47,6 +47,5 @@ const director: Directors = new Teacher(
 ) as Directors; // Use type assertion to specify the Director type
 
 director.numberOfReports = 5;
-director.department = "Finance";
 
 console.log(director.toString());
