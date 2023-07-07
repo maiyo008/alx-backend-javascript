@@ -24,12 +24,16 @@ class Teacher {
   }
 }
 
-const teacher3: Teacher = {
+interface Directors extends Teacher {
+  numberOfReports: number;
+}
+
+const director1: Directors = {
   firstName: 'John',
-  fullTimeEmployee: false,
   lastName: 'Doe',
   location: 'London',
-  contract: false,
+  fullTimeEmployee: true,
+  numberOfReports: 17,
 };
 
-console.log(teacher3.toString());
+console.log(director1.toString());
