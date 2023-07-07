@@ -1,21 +1,29 @@
 class Teacher {
-  firstName: string;
-  lastName: string;
+  private readonly firstName: string;
+  private readonly lastName: string;
   readonly fullTimeEmployee: boolean;
-  yearsOfExperience?: number;
+  readonly yearsOfExperience?: number;
   readonly location: string;
 
-  constructor(firstName: string, lastName: string, fullTimeEmployee: boolean, location: string) {
+  constructor(
+    firstName: string,
+    lastName: string,
+    fullTimeEmployee: boolean,
+    location: string,
+    { yearsOfExperience, ...additionalAttributes }: { yearsOfExperience?: number; [key: string]: any }
+  ) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.fullTimeEmployee = fullTimeEmployee;
     this.location = location;
+    this.yearsOfExperience = yearsOfExperience;
+
+    Object.assign(this, additionalAttributes);
   }
 
-  [key: string]: any; // Allow adding any attribute to the object
-
   toString(): string {
-    const attributes = Object.entries(this)
+    const attributes = Object.getOwnPropertyNames(this)
+      .map((key) => [key, this[key]])
       .map(([key, value]) => `${key}: ${value}`)
       .join('\n');
 
@@ -23,12 +31,17 @@ class Teacher {
   }
 }
 
-const teacher3: Teacher = {
-  firstName: 'John',
-  fullTimeEmployee: false,
-  lastName: 'Doe',
-  location: 'London',
-  contract: false,
-};
+// Example usage
+const teacher: Teacher = new Teacher(
+  "John",
+  "Doe",
+  true,
+  "London",
+  {
+    yearsOfExperience: 5,
+    contract: true,
+    subject: "Math",
+  }
+);
 
-console.log(teacher3.toString());
+console.log(teacher.toString());
