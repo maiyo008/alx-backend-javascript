@@ -33,17 +33,21 @@ class Teacher {
   }
 }
 
+interface Directors extends Teacher {
+  numberOfReports: number;
+}
+
 // Example usage
-const teacher: Teacher = new Teacher(
+const director: Directors = new Teacher(
   "John",
   "Doe",
   true,
   "London",
   {
-    yearsOfExperience: 5,
-    contract: true,
-    subject: "Math",
+    yearsOfExperience: 10,
+    numberOfReports: 5,
+    department: "Finance",
   }
 );
 
-console.log(teacher.toString());
+console.log(director.toString());
