@@ -11,31 +11,26 @@ function countStudents(path) {
 
         for (const line of lines) {
           const studentData = line.split(',');
-          const field = studentData[3];
+          const field = studentData[3]; // Assuming field is in the 4th column
 
           if (field && field !== 'field') {
             if (!fields[field]) {
               fields[field] = [];
             }
-            fields[field].push(studentData[0]);
+
+            fields[field].push(studentData[0]); // Assuming the name is in the 1st column
           }
         }
 
-        let totalStudents = 0;
+        // Create a list of students as a string
+        let studentsList = '';
         for (const field in fields) {
           if (Object.prototype.hasOwnProperty.call(fields, field)) {
-            totalStudents += fields[field].length;
+            studentsList += `Number of students in ${field}: ${fields[field].length}. List: ${fields[field].join(', ')}\n`;
           }
         }
 
-        console.log(`Number of students: ${totalStudents}`);
-        for (const field in fields) {
-          if (Object.prototype.hasOwnProperty.call(fields, field)) {
-            console.log(`Number of students in ${field}: ${fields[field].length}. List: ${fields[field].join(', ')}`);
-          }
-        }
-
-        resolve();
+        resolve(studentsList); // Resolve with the list of students as a string
       }
     });
   });
