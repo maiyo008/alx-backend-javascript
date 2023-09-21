@@ -1,0 +1,23 @@
+{
+  "name": "unittest",
+  "version": "1.0.0",
+  "description": "Unittests in JS",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maiyo008/alx-backend-javascript.git"
+  },
+  "author": "Tony Maiyo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maiyo008/alx-backend-javascript/issues"
+  },
+  "homepage": "https://github.com/maiyo008/alx-backend-javascript#readme",
+  "devDependencies": {
+    "eslint": "^8.49.0",
+    "mocha": "^10.2.0"
+  }
+}
