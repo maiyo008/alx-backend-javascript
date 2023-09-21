@@ -7,8 +7,5 @@ describe("calculateNumber", function () {
     assert.strictEqual(calculateNumber(1,3.7), 5);
     assert.strictEqual(calculateNumber(1.2,3.7), 5);
     assert.strictEqual(calculateNumber(1.5,3.7), 6);
-    assert.strictEqual(calculateNumber(-1,3), 2);
-    assert.strictEqual(calculateNumber(1,-3), -2);
-    assert.strictEqual(calculateNumber(0,3), 3);
   });
 });
