@@ -11,19 +11,19 @@ function countStudents(path) {
 
     const fieldCounts = students.reduce((counts, student) => {
       const field = student[3];
-      counts[field] = (counts[field] || 0) + 1;
-      return counts;
+      return { ...counts, [field]: (counts[field] || 0) + 1 };
     }, {});
 
     const firstNamesByField = students.reduce((names, student) => {
       const field = student[3];
-      names[field] = names[field] || [];
-      names[field].push(student[0]);
-      return names;
+      return {
+        ...names,
+        [field]: [...(names[field] || []), student[0]],
+      };
     }, {});
 
     for (const field in fieldCounts) {
-      if (fieldCounts.hasOwnProperty(field)) {
+      if (Object.prototype.hasOwnProperty.call(fieldCounts, field)) {
         const count = fieldCounts[field];
         const names = firstNamesByField[field].join(', ');
 
