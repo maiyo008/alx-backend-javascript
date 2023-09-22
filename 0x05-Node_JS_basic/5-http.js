@@ -9,7 +9,7 @@ function countStudents(path) {
       }
 
       const students = data.trim().split('\n').map((line) => line.split(','));
-      const header = students.shift();
+      students.shift();
       const totalStudents = students.length;
 
       const fieldCounts = students.reduce((counts, student) => {
@@ -41,13 +41,19 @@ function countStudents(path) {
 const hostname = '127.0.0.1';
 const port = 1245;
 
+if (process.argv.length <= 2) {
+  pathToFile = 'database.csv';
+} else {
+  const pathToFile = process.argv[2];
+}
+
 const app = http.createServer((req, res) => {
   const { method, url } = req;
   res.setHeader('Content-Type', 'text/plain');
   if (url === '/') {
     res.end('Hello Holberton School!');
   } else if (url === '/students' && method === 'GET') {
-    countStudents(process.argv[2])
+    countStudents(pathToFile)
       .then((data) => {
         res.end(`This is the list of our students\n${data}`);
       })
